@@ -3,4 +3,5 @@ class Organization < ApplicationRecord
     validates :hourly_rate, presence: true
 
     has_many :users
+    has_many :shifts, through: :users
 end

@@ -3,8 +3,17 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/logged_in', to: 'sessions#is_logged_in?'
-  resources :users, only: %w(create update)
-  resources :organizations, only: %w(create index update)
+
+  resources :users, only: %w(create update) 
+  resources :organizations, only: %w(create index update show) do
+    resources :users, only: %w(index) do
+      resources :shifts, only: %w(index) 
+    end 
+  end
+  resources :shifts, only: %w(create)
+
   get '/organizations/:name', to: 'organizations#show'
-  delete '/leave_organization/:id', to: 'organizations#leave_organization' 
+  patch '/leave_organization/:user_id', to: 'users#leave_organization'
+  patch '/join_organization/:id', to: 'organizations#join_organization'  
+
 end

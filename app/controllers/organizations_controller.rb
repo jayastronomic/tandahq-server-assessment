@@ -1,12 +1,13 @@
 class OrganizationsController < ApplicationController
     def index
+        user = current_user
         organizations = Organization.all
-        render json: organizations, current_user: current_user
+        render json: organizations, each_serializer: OrganizationsSerializer, current_user: user
     end
 
     def show
-        organization = Organization.find_by(name: params[:name])
-        render json: organization, current_user: current_user
+        organization = Organization.find(params[:id])
+        render json: organization, serializer: OrganizationSerializer, current_user: current_user
     end
 
     def update
@@ -31,10 +32,9 @@ class OrganizationsController < ApplicationController
         end
     end
 
-    def leave_organization
+    def join_organization
         organization = Organization.find(params[:id])
-        user = current_user
-        organization.users.delete(user)
+        organization.users << User.find(params[:user_id])
         render json: organization, current_user: current_user
     end
 
