@@ -1,24 +1,52 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Hello. Welcome To G2 Crowd Team Roster Backend. This projet is intended to be used in development mode on a single machine that ports to localhost:
 
-Things you may want to cover:
+# How to Get Started
 
-* Ruby version
+- Ruby version
 
-* System dependencies
+The ruby and Rails version being used in this project:
 
-* Configuration
+```
+ruby '2.7.0'
+gem 'rails', '~> 5.2.3'
+```
 
-* Database creation
+- System dependencies
 
-* Database initialization
+Run bundle command to install dependencies:
 
-* How to run the test suite
+```
+bundle install
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+- Database creation and initialization
 
-* Deployment instructions
+Create and migrate the database.
 
-* ...
+Run the commands:
+
+```
+rails db:create
+rails db:migrate
+```
+
+To check to see if migrations were created, run the command:
+
+```
+rails db:migrate:status
+```
+
+Database should be good to go!
+To spin the server, just run the following command
+
+```
+rails s
+```
+
+The server is configured to connect to port 3001.
+Now you can start the client side app to TandaHQ!
+
+Here is the link to get the client side up and running on your local machine "https://github.com/jayastronomic/tandahq-client-assessment"
+It is highly suggested to get the backend up and running first, but not mandatory.
