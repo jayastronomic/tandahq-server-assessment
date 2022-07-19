@@ -1,8 +1,7 @@
 class OrganizationsController < ApplicationController
     def index
-        user = current_user
-        organizations = Organization.all
-        render json: organizations, each_serializer: OrganizationsSerializer, current_user: user
+        organizations = Organization.order(created_at: :desc)
+        render json: organizations, each_serializer: OrganizationsSerializer, current_user: current_user
     end
 
     def show
