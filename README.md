@@ -1,6 +1,6 @@
 # README
 
-Hello. Welcome To G2 Crowd Team Roster Backend. This projet is intended to be used in development mode on a single machine that ports to localhost:
+Hello. Welcome To the TandaHQ Backend. This project is intended to be used in development mode on a single machine that ports to localhost:
 
 # How to Get Started
 
